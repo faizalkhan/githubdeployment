@@ -16,13 +16,13 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '14'  # Ensure you are using the correct Node.js version
+        node-version: [14.20]  # Ensure you are using the correct Node.js version
 
     - name: Install dependencies
       run: npm install
 
     - name: Build the Angular app
-      run: npm run build -- --configuration production --base-href "https://faizalkhan.github.io/githubdeployment/"
+      run: npm install && npm run build -- --configuration production --base-href "https://faizalkhan.github.io/githubdeployment/"
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@v4
