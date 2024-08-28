@@ -29,3 +29,4 @@ jobs:
       with:
         branch: gh-pages  # The branch where GitHub Pages content is stored
         folder: dist/my-app  # The folder that contains the built app files
+        token: ${{ secrets.GH_TOKEN }}
