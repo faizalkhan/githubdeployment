@@ -1,0 +1,31 @@
+name: Deploy Angular to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # Trigger the action on push to the master branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'  # Ensure you are using the correct Node.js version
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build the Angular app
+      run: npm run build -- --configuration production --base-href "https://faizalkhan.github.io/githubdeployment/"
+
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages  # The branch where GitHub Pages content is stored
+        folder: dist/my-app  # The folder that contains the built app files
